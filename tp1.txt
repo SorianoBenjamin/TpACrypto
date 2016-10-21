@@ -1,0 +1,16 @@
+                 TP1
+
+Exercice A.1 :
+
+*****Question 1*****
+
+h = MD5(c) = 6f07cf12710da99056f9d9fb631883e9
+
+
+*****Question 5*****
+
+h = MD5(c) = e46dace2f240c9f5d276a2501471a404
+
+
+
+
