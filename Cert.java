@@ -10,14 +10,12 @@ public class Cert {
     String buffe ="";
 		String motLu;
 		String ffinal = "";
-		int compteur =0;
 		byte[] buffer, resume;
 		MessageDigest fonction_de_hachage;
 		try {
 			br = new BufferedReader(new FileReader("email1.txt"));
 			while((motLu = br.readLine()) != null)
 			{
-				compteur ++;
 				if(motLu.contains("Message-Id"))
 				{
           br.readLine();
