@@ -2,6 +2,7 @@
 import java.io.*;
 import java.util.Scanner;
 import java.security.*;
+import java.io.FileWriter;
 
 public class Cert {
     public static void main(String[] args) {
@@ -17,14 +18,18 @@ public class Cert {
 			while((motLu = br.readLine()) != null)
 			{
 				compteur ++;
-				if(compteur >= 15)
+				if(motLu.contains("Message-Id"))
 				{
-					ffinal += motLu;
-					ffinal += "\r\n";
+          br.readLine();
+          while((motLu = br.readLine()) != null)
+          {
+  					ffinal += motLu;
+  					ffinal += "\r\n";
+          }
 				}
 			}
       ffinal +="c5dcb78732e1f3966647655229729843\r\n";
-			//System.out.println('"'+ffinal+'"');
+			System.out.println('"'+ffinal+'"');
 		} catch (Exception e) { e.printStackTrace(); }
 		try {
 			buffer = ffinal.getBytes();          // On récupère les octets de la chaîne
@@ -39,7 +44,7 @@ public class Cert {
   			br = new BufferedReader(new FileReader("email1.txt"));
   			while((motLu = br.readLine()) != null)
   			{
-          buffe += motLu+"\n\r";
+          buffe += motLu+"\r\n";
           if(motLu.contains("Message-Id"))
           {
             buffe +="X-UdC_authentique: ";
@@ -50,6 +55,17 @@ public class Cert {
   			}
       } catch (Exception e) { e.printStackTrace(); }
 		  } catch (Exception e) { e.printStackTrace(); }
+		try{
+		File f = new File("email1-secure.txt");
+    f.createNewFile();
+		FileWriter fw = new FileWriter(f);
+		fw.write(buffe);
+    fw.close();
+		}catch (Exception e) {e.printStackTrace();}
+
+      /*File f = new File("email1-secure.txt");
+      FileWriter fw = new FileWriter (f);
+      fw.write(buffe);*/
       System.out.println('"'+buffe+'"');
     }
 }

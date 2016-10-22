@@ -1,11 +1,4 @@
-"Bonjour Marcel,
-Transferez 100 000 euros sur le compte IBAN
-FR7630056009271234567890182 des aujourd'hui.
-Thomas
-c5dcb78732e1f3966647655229729843
-"
-Le résumé MD5 de cette chaîne est: E46DACE2F240C9F5D276A2501471A404
-"Received: from 31.121.118.45 (EHLO serveur.fr)
+Received: from 31.121.118.45 (EHLO serveur.fr)
   by mta1007.mail.ukl.yahoo.com with SMTP; Fri, 21 Sep 2012 21:31:16 +0000
 Received: by serveur.fr (Postfix, from userid 106)
   id 3DF2F15A0CD; Fri, 21 Sep 2012 23:31:16 +0200 (CEST)
@@ -24,4 +17,3 @@ Bonjour Marcel,
 Transferez 100 000 euros sur le compte IBAN
 FR7630056009271234567890182 des aujourd'hui.
 Thomas
-"
