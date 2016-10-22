@@ -23,23 +23,22 @@ int main()
 {
   int i;
   unsigned char resume_md5[MD5_DIGEST_LENGTH];
-  unsigned char resume_sha1[SHA_DIGEST_LENGTH];
   int vide = 0;
-  char message[10000];
+  char* message;
   static const char filename[] = "email1.txt";
   FILE *file = fopen ( filename, "r" );
   if ( file != NULL )
   {
-     char line [ 256 ]; /* or other suitable maximum line size */
+     char* line; /* or other suitable maximum line size */
 
      while ( fgets ( line, sizeof line, file ) != NULL ) /* read a line */
      {
         if(vide == 1)
         {
-			strcat(message, line);
-		}
+					strcat(message, line);
+				}
         if(compare(line,"\r\n"))
-			vide = 1;
+					vide = 1;
      }
      fclose ( file );
   }
@@ -47,31 +46,27 @@ int main()
   {
      perror ( filename ); /* why didn't the file open? */
   }
-  printf("\"%s\" \n", message);
+  printf("\"%s\"", message);
 
   MD5_CTX contexte;
   MD5_Init (&contexte); // Initialisation de la fonction de hachage
   MD5_Update (&contexte, message, sizeof(message) -1 );
   MD5_Final (resume_md5, &contexte);
-  
+
   printf("Le résumé MD5 de cette chaîne est: 0x");
-  for(i = 0; i < MD5_DIGEST_LENGTH; i++) printf("%02x", resume_md5[i]);
+  for(i = 0; i < MD5_DIGEST_LENGTH; i++)
+		printf("%02x", resume_md5[i]);
   printf("\n");
 
-  /*printf("Message à hacher: \"%s\" \n", message);
-  SHA1((unsigned char*)message, sizeof(message) -1, resume_sha1);  // Il faut supprimer le '\0'
-  printf("Le résumé SHA1 de cette chaîne est: 0x");
-  for(i = 0; i < SHA_DIGEST_LENGTH; i++) printf("%02x", resume_sha1[i]);
-  printf("\n");*/
-return 0;
+	return 0;
 }
 
 /*
 > make
 > ./resumes_chaine
-Message à hacher: "Alain Turin" 
+Message à hacher: "Alain Turin"
 Le résumé MD5 de cette chaîne est: 0xc5dcb78732e1f3966647655229729843
-Message à hacher: "Alain Turin" 
+Message à hacher: "Alain Turin"
 Le résumé SHA1 de cette chaîne est: 0x9b682f2ca6f44cb60493288a686de5d81eca6b6d
 > echo -n "Alain Turin" | md5
 c5dcb78732e1f3966647655229729843
