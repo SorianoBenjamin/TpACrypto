@@ -1,5 +1,0 @@
-"Bonjour Marcel,
-Transferez 100 000 euros sur le compte IBAN
-FR7630056009271234567890182 des aujourd'hui.
-Thomas
-"Le résumé MD5 de cette chaîne est: 0x98865c0e01a85559554d5768429e06a8
